@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bog‘lanish | Uy Savdo Platformasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">🏡 Uy Savdo Platformasi</h1>
+            <nav>
+                <a href="/" class="text-gray-700 hover:text-blue-500 mx-2">Bosh sahifa</a>
+                <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-500 mx-2">E'lonlar</a>
+                <a href="{% url 'about' %}" class="text-gray-700 hover:text-blue-500 mx-2">Biz haqimizda</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-16 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold">Biz bilan bog‘laning</h2>
+            <p class="mt-4 text-lg">Uy sotish yoki sotib olish bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <div class="bg-white shadow-md rounded-lg p-8 md:w-2/3 lg:w-1/2 mx-auto">
+            <h3 class="text-2xl font-semibold text-gray-800 text-center">Bizga xabar yuboring</h3>
+            <p class="text-gray-600 text-center mt-2">Har qanday savol yoki taklif bo‘lsa, quyidagi formani to‘ldiring.</p>
+
+            <form action="{% url 'contact' %}" method="POST" class="mt-6">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium">Ismingiz</label>
+                    <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium">Email</label>
+                    <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium">Xabaringiz</label>
+                    <textarea name="message" rows="4" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                    Xabarni yuborish
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="bg-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-semibold text-center text-blue-600">Aloqa ma'lumotlari</h3>
+            <div class="grid md:grid-cols-3 gap-8 mt-8 text-center">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">📍 Manzil</h4>
+                    <p class="mt-2 text-gray-600">Toshkent, Shayxontohur tumani, Yunusobod ko‘chasi</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">📧 Email</h4>
+                    <p class="mt-2 text-gray-600">support@uysavdo.uz</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">📞 Telefon</h4>
+                    <p class="mt-2 text-gray-600">+998 90 123 45 67</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-semibold text-center text-blue-600">Bizning joylashuv</h3>
+            <div class="mt-6 rounded-lg overflow-hidden shadow-md">
+                <iframe 
+                    class="w-full h-96" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.7482224915795!2d69.2801671!3d41.299495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8baeba0d9aab%3A0xe6b0b2e6e8f4e46b!2sTashkent!5e0!3m2!1sen!2s!4v1619478497005!5m2!1sen!2s" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-12">
+        <p>© 2025 Uy Savdo Platformasi. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biz haqimizda | Uy Savdo Platformasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">🏡 Uy Savdo Platformasi</h1>
+            <nav>
+                <a href="/" class="text-gray-700 hover:text-blue-500 mx-2">Bosh sahifa</a>
+                <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-500 mx-2">E'lonlar</a>
+                <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-500 mx-2">Bog‘lanish</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="bg-blue-600 text-white py-16 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold">Biz Haqimizda</h2>
+            <p class="mt-4 text-lg">Eng ishonchli uy oldi-sotdi platformasi. Uy sotish yoki sotib olish endi juda oson!</p>
+        </div>
+    </section>
+
+    <!-- About us section -->
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h3 class="text-3xl font-semibold text-blue-600">Nima uchun bizni tanlaysiz?</h3>
+                <p class="mt-4 text-gray-700 leading-relaxed">
+                    Biz uy oldi-sotdisini yanada **tez, oson va ishonchli** qilishga harakat qilamiz. 
+                    Saytimiz orqali **sotuvchilar o‘z e’lonlarini qo‘shishlari, xaridorlar esa eng yaxshi variantlarni topishlari** mumkin.
+                </p>
+                <ul class="mt-4 space-y-2">
+                    <li>✔️ 100% xavfsiz bitimlar</li>
+                    <li>✔️ Eng so‘nggi uy narxlari</li>
+                    <li>✔️ Foydalanuvchilar uchun qulay interfeys</li>
+                    <li>✔️ 24/7 qo‘llab-quvvatlash</li>
+                </ul>
+            </div>
+            <div>
+                <img src="https://source.unsplash.com/600x400/?house" alt="Uy savdo platformasi" class="rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="bg-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-semibold text-center text-blue-600">Xizmatlarimiz</h3>
+            <div class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 bg-gray-100 rounded-lg text-center shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">🔍 Uy qidirish</h4>
+                    <p class="mt-2 text-gray-600">Xaridorlar uchun eng qulay uy qidirish tizimi.</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg text-center shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">📢 Uy sotish</h4>
+                    <p class="mt-2 text-gray-600">Sotuvchilar uchun bepul e’lon joylashtirish imkoniyati.</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg text-center shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800">📞 Konsultatsiya</h4>
+                    <p class="mt-2 text-gray-600">Biz bilan bog‘laning va eng yaxshi bitimni amalga oshiring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-blue-600 text-white py-12 text-center">
+        <h3 class="text-3xl font-bold">Siz ham ajoyib uy topmoqchimisiz?</h3>
+        <p class="mt-4 text-lg">Biz bilan bog‘laning va eng yaxshi uylarni toping.</p>
+        <a href="{% url 'contact' %}" class="mt-6 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg shadow-md font-semibold text-lg">Bog‘lanish</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-6 mt-12">
+        <p>© 2025 Uy Savdo Platformasi. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+</body>
+</html>

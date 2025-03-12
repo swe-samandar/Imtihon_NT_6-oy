@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ house.title }} {{ house.brand }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .house-img {
+            width: 100%;
+            border-radius: 10px;
+            max-height: 350px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .house-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .price {
+            font-size: 22px;
+            color: #e63946;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .details {
+            text-align: left;
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .details p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .description {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 16px;
+            text-align: left;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if house.image %}
+            <img src="{{ house.image.url }}">
+        {% else %}
+            <img src="{% static 'default.png' %}" alt="house-image">
+        {% endif %}
+
+        <h1 class="house-title">Manzil: <bold>{{ house.city }}</bold> shahar<br><b>{{ house.district }}</b> tuman<br><b>{{ house.street }}</b> ko'chasi</h1>
+        <p class="price">Narx: ${{ house.price }}</p>
+
+        <div class="details">
+            <h4>Qavat: {{ house.floor }}</h4> 
+            <h4>Hududi: {{ house.area }}m<sup>2</sup></h4>
+            <p><strong>Xonalar soni:</strong> {{ house.rooms }} xonali</p>
+            <p><strong>Qurilish firmasi:</strong> {{ house.company }}</p>
+            {% if house.is_new %}
+                <p><b>Holati:</b> Yangi qurilgan zamonaviy uylardan</p>
+            {% else %}
+                <p><b>Holati:</b> Qayta ta'mirlangan uylardan</p>
+            {% endif %}
+        </div>
+
+        <div class="description">
+            <h3>Uy haqida:</h3>
+            <p>{{ house.description }}</p>
+        </div>
+
+        <a href="{% url 'home' %}" class="back-btn">⬅️ Orqaga</a>
+        <a href="{% url 'house-update' house.id %}" class="back-btn">Uyni yangilash</a>
+        <a href="{% url 'house-delete' house.pk %}" class="back-btn">Uyni o'chirish</a>
+    </div>
+</body>
+</html>

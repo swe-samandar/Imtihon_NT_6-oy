@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            background-color: aqua;
+        }
+
+        a {
+            text-decoration: none;
+            border: 2px blue solid;
+            border-radius: 5px;
+            background-color: grey;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.1s linear;
+        }
+
+        a:hover {
+            background-color: rgb(109, 108, 108);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'register' %}">Register</a>    
+            <a href="{% url 'login' %}">Login</a> 
+        </nav>
+    </header> 
+</body>
+</html>

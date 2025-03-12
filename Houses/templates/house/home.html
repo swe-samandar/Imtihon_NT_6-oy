@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uylar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&family=Quicksand:wght@500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        nav {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark: #3c393d;
+            --primary: #007bff;
+            --light-gray: #f8f9fa;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            background-color: grey;
+            align-items: center;
+        }
+
+        .navigation a {
+            background-color: aquamarine;
+            text-decoration: none;
+            margin: 8px 12px;
+            color: black;
+            border: 3px chocolate solid;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        .navigation a:hover {
+            background-color: aqua;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            font-family: "Quicksand", sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .con {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .house {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .house img {
+            width: 100%;
+            border-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background: #0056b3;
+        }
+
+        .pagination .current {
+            padding: 8px 12px;
+            border-radius: 5px;
+            background: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navigation">
+                <div>
+                    <a href="/">Bosh sahifa</a>
+                </div>
+                <div class="navigation">
+                    <a href="{% url 'house-create' %}"><span style="font-weight: 900;">+</span> E'lon</a>
+                    <a href="{% url 'dashboard' %}">Kabinetga o'tish</a>
+                    <a href="{% url 'logout' %}">Profilni tark etish</a> 
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Arzon narxlarda uylar sotib oling!</h1>
+
+        <form method="GET">
+            <input type="search" name="city_" placeholder="Shahar">
+            <input type="search" name="district_" placeholder="Tuman">
+            <input type="search" name="price_" placeholder="Narx">
+            <input type="search" name="rooms_" placeholder="Xonalar soni">
+            <input type="search" name="floor_" placeholder="Qavat">
+            <button type="submit">🔍 Qidirish</button>
+        </form>
+
+        <div class="container con">
+            {% for house in page_obj %}
+            <div class="house">
+                <a href="{% url 'house-detail' house.id %}">
+                    {% if house.image %}
+                        <img src="{{ house.image.url }}" alt="Uy rasmi">
+                    {% else %}
+                        <img src="{% static 'default.png' %}" alt="house-image">
+                    {% endif %}
+                </a>
+                <h3>{{ house.city }} - {{ house.district }}</h3>
+                <p style="color: green;">Narx: ${{ house.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if page_obj.has_other_pages %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page=1">⏮ Boshi</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">⬅ Oldingi</a></li>
+            {% endif %}
+
+            <li class="current">Sahifa {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</li>
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">Keyingi ➡</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">⏭ Oxiri</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

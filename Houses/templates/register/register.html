@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit" class="btn btn-primary">Registration</button>
+            <a href="{% url 'login' %}" 
+            style="border: 2px crimson solid; 
+            background-color: aqua;
+            border-radius: 6px;
+            text-decoration: none;">Login</a>
+        </div>
+    </form>
+</body>
+</html>
