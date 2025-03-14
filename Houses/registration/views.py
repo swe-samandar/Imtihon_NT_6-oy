@@ -24,7 +24,7 @@ class Registration(View):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('dashboard')
+            return redirect('home')
         return render(request, 'register/register.html', {'form': form})
 
 
@@ -63,6 +63,6 @@ class UserUpdate(View):
         if form.is_valid():
             user = form.save(commit=False)
             password = user.set_password(form.cleaned_data['password'])
-            user.update(password=password)
+            user.save()
             return redirect('dashboard')
         return render(request, 'register/user_update.html', {'form': form})

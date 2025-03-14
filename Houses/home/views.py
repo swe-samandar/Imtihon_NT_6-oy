@@ -30,7 +30,7 @@ class Home(LoginRequiredMixin, View):
         if floor:
             houses = houses.filter(floor=floor)
 
-        paginator = Paginator(houses, 3) 
+        paginator = Paginator(houses, 1) 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 

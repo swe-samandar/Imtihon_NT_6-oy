@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     confirm_password = forms.CharField(max_length=128, required=True, widget=forms.PasswordInput())
-    # image = forms.ImageField(upload_to='users/', blank=True, null=True)
 
     class Meta:
         model = User
